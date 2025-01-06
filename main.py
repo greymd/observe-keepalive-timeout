@@ -44,7 +44,7 @@ def main(url):
             conn.close()
             print(f"Close connection", file=sys.stderr)
             break
-        print(f"Waiting for {i} seconds, connection = {conn_status}")
+        print(f"Waiting for {i+1} seconds, connection = {conn_status}")
         time.sleep(1)
     conn.close()
 

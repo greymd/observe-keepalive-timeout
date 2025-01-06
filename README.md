@@ -12,12 +12,12 @@ The script sends a HTTP request to the specified URL but does not close the conn
 $ python3 ./main.py checkip.amazonaws.com
 ⋮
 ⋮
-Waiting for 0 seconds, connection = ESTAB
 Waiting for 1 seconds, connection = ESTAB
 Waiting for 2 seconds, connection = ESTAB
 ⋮
 Waiting for 13 seconds, connection = ESTAB
 Waiting for 14 seconds, connection = ESTAB
+Waiting for 15 seconds, connection = ESTAB
 Connection is in CLOSE-WAIT state
 ```
 => We can see `checkip.amazonaws.com`'s keepalive timeout is around 15 seconds because the connection becomes half closed after 15 seconds.
