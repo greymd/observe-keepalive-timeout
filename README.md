@@ -20,7 +20,7 @@ Waiting for 14 seconds, connection = ESTAB
 Waiting for 15 seconds, connection = ESTAB
 Connection is in CLOSE-WAIT state
 ```
-=> We can see `checkip.amazonaws.com`'s keepalive timeout is around 15 seconds because the connection becomes half closed after 15 seconds.
+=> *keepalive timeout is around 15 seconds* on `checkip.amazonaws.com`. We can see that the connection is half closed after 15 seconds.
 
 ## Usage (For Linux)
 
