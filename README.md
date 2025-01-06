@@ -4,7 +4,7 @@ This is a simple script to observe keepalive timeout.
 
 The most reliable way to check the keepalive timeout seconds is to observe actual TCP connection status.
 
-The script sends a HTTP request to the specified URL but does not close the connection. Then, the script observes the connection status using `ss` command.
+The script sends a HTTP request to the specified URL but does not actively close the connection but wait for the connection to be closed by the server. Then, the script observes the connection status using `ss` command.
 
 ## Example
 
@@ -20,7 +20,7 @@ Waiting for 14 seconds, connection = ESTAB
 Waiting for 15 seconds, connection = ESTAB
 Connection is in CLOSE-WAIT state
 ```
-=> *keepalive timeout is around 15 seconds* on `checkip.amazonaws.com`. We can see that the connection is half closed after 15 seconds.
+=> *keepalive timeout is around 15 seconds* on `checkip.amazonaws.com`. We can see that the connection is half closed (CLOSE-WAIT) after 15 seconds.
 
 ## Usage (For Linux)
 
