@@ -32,13 +32,17 @@ def main(url):
     conn.request("GET", path, headers={"Connection": "keep-alive"})
     response = conn.getresponse()
     for header, value in response.getheaders():
-        print(f"{header}: {value}")
+        print(f"{header}: {value}", file=sys.stderr)
     print(response.read().decode("utf-8"), file=sys.stderr)
+    sport = conn.sock.getsockname()[1]
     for i in range(0, max_wait_time):
         # check if the connection status is not ESTAB
-        conn_status = get_connection_status(conn.sock.getsockname()[1])
+        conn_status = get_connection_status(sport)
         if conn_status != "ESTAB":
-            print(f"Connection is in {conn_status} state", file=sys.stderr)
+            print(f"Connection is in {conn_status}", file=sys.stderr)
+            # close the connection
+            conn.close()
+            print(f"Close connection", file=sys.stderr)
             break
         print(f"Waiting for {i} seconds, connection = {conn_status}")
         time.sleep(1)
